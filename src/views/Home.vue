@@ -1,18 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <pre>{{ posts }}</pre>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import { GET_POSTS } from "../queries/graphql";
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld,
-  },
+  name: "home",
+  data: () => ({
+    posts: null
+  }),
+  apollo: {
+    posts: {
+      query: GET_POSTS
+    }
+  }
 };
 </script>
